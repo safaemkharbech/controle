@@ -1,0 +1,39 @@
+#toutes les requets dans la gateway dans le path contient /customer/** il vont etre renvoyer vers adress http://localhost:8081
+#configuration static
+server:
+  port: 8888
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    discovery:
+      enabled: true
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]' :
+            allowedOrigins: "http://localhost:4200"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+
+
+
+#    gateway:
+#      mvc:
+#        routes:
+#          - id: r1
+#            uri: http://localhost:8081
+#            predicates:
+#              - Path= /customers/**
+#          - id: r2
+#            uri: http://localhost:8082
+#            predicates:
+#              - Path= /products/**
+#
+
+
+
